@@ -45,7 +45,7 @@
 
 .bootstrap-select {
     /*width: 220px\9; IE8 and below*/
-    width: 220px\0; /*IE9 and below*/
+    width: 220px\0 /*IE9 and below*/
 }
 
 .bootstrap-select.form-control:not([class*="span"]) {
@@ -101,8 +101,7 @@
 .bootstrap-select.btn-group .dropdown-menu {
     min-width: 100%;
     z-index: 2000;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+       box-sizing: border-box;
 }
 
 .bootstrap-select.btn-group .dropdown-menu.inner {
@@ -243,8 +242,7 @@
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
     pointer-events: none;
     opacity: 0.9;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+       box-sizing: border-box;
 }
 
 .mobile-device {
@@ -283,8 +281,7 @@
 .bootstrap-select .bs-actionsbox {
     float: left;
     width: 100%;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+       box-sizing: border-box;
 }
 
 .bootstrap-select-searchbox + .bs-actionsbox {

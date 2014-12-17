@@ -87,7 +87,9 @@ jQuery(function($){
 	// ! init the addnew area
 	// ----------------------------------------
 	function addNewInit() {
-		jQuery('#banner-option #addnew').find('input').val('').closest('#addnew').find('.preview').html('').closest('#addnew').find('url').val('');
+		var $img = jQuery('#banner-option #addnew').find('input').val('').closest('#addnew').find('.preview').children('img');
+		$img.after('<img src class="img-responsive" alt="">');
+		$img.remove();
 		//jQuery('#banner-option #addnew').find('textarea').val('');
 	}
 
@@ -187,13 +189,19 @@ jQuery(function($){
 
 			banner_item.title = jQuery(e).find('input.title').val();
 			banner_item.describe = jQuery(e).find('input.describe').val();
+			banner_item.year1 = jQuery(e).find('input.year1').val();
+			banner_item.rate1 = jQuery(e).find('input.rate1').val();
+			banner_item.year2 = jQuery(e).find('input.year2').val();
+			banner_item.rate2 = jQuery(e).find('input.rate2').val();
 			banner_item.url   = jQuery(e).find('input.url').val();
 			banner_item.imgurl   = jQuery(e).find('input.imgurl').val();
+
+			console.log(banner_item);
 
 			banner_data.bannerlist[i] = banner_item;
 		});
 
-		console.log(banner_data);
+		//console.log(banner_data);
 
 		//post to server.
 		jQuery.post(banner_data.url, banner_data, function(response) {})
@@ -216,12 +224,19 @@ jQuery(function($){
 	// ! change preview img
 	// ----------------------------------------
 	function freshPreview() {
-		var num = jQuery(this).closest('.tab-pane').index('.tab-pane');
-		var $target = jQuery('#banner-option .tab-pane').eq(num);
+		// var num = jQuery(this).closest('.tab-pane').index('.tab-pane');
+		// var $target = jQuery('#banner-option .tab-pane').eq(num);
+
+		var $target = jQuery(this).closest('.tab-pane');
 		var imgUrl = $target.find('input.imgurl').val();
-		$target.find('.preview').children('img').attr('src',imgUrl);
+
+		console.log(imgUrl);
+
 		if(!imgUrl)
 			$target.find('.preview').children('img').attr('src','#');
+
+		else
+			$target.find('.preview').children('img').attr('src',imgUrl);
 	}
 
 	// ----------------------------------------

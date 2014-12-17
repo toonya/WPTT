@@ -19,11 +19,14 @@ class Bootsrap_basic extends Walker {
      */
 
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		//echo ' '.get_the_ID().' '.$item->object_id.'<br />';
+		//echo ' '.get_the_title().' '.$item->post_title.'<br />';
+        //global $post;
+        //wp_die(var_dump($post));
 		//$item->object_id is string, get_the_ID(),returns a int.
-        $output .= sprintf( "\n<li %s><a href='%s'>%s</a></li>\n",
-            ( $item->object_id == get_the_ID() ) ? ' class="active"' : '',
-            $item->url,
+        $current = ( $item->object_id == get_the_ID() || (is_front_page() && ($item->post_title == '首页'||$item->post_title == 'Home')) );
+        $output .= sprintf( "\n<li><a %s href='%s'>%s</a></li>\n",
+            $current? ' class="active"' : '',
+            $current? '#' :  $item->url,
             $item->title
         );
     }

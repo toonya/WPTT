@@ -24,12 +24,10 @@
   margin: 24px 0;
 }
 * {
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
 #banner-option *,
 .media-modal ul * {
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 .inputError {

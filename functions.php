@@ -58,7 +58,14 @@ require_once('inc/metabox/discount.php');
 
 if(is_admin()){
 	require_once('inc/protection-code.php');
-	require_once('inc/slideshow-management.php');
+}
+
+
+
+if(is_admin()){
+	require_once('inc/img-management.php');
+	//new TY_img_management('zh','中文','图片规格描述,未添加');
+	//new TY_img_management('slug_prefix','menu-name','description');
 }
 
 
@@ -86,6 +93,18 @@ function page_remove_parent_meta_boxes() {
 }
 //add_action( 'admin_menu', 'page_remove_parent_meta_boxes' );
 
+// ----------------------------------------
+// ! disable update
+// ----------------------------------------
+function hide_update_notice_to_all_but_admin_users()
+{
+    // if (!current_user_can('update_core')) {
+    //     remove_action( 'admin_notices', 'update_nag', 10);
+    // }
+
+    remove_action( 'admin_notices', 'update_nag', 3);
+}
+add_action( 'admin_head', 'hide_update_notice_to_all_but_admin_users', 1 );
 
 // ----------------------------------------
 // ! load bootstrap select component
@@ -104,6 +123,29 @@ function load_bootstrap_select() {
 }
 
 add_action( 'wp_enqueue_scripts', 'load_bootstrap_select' );
+
+// ----------------------------------------
+// ! get language list. plugin polylang.
+// ----------------------------------------
+
+function get_language_list() {
+	if(function_exists('pll_the_languages')) {
+		$language_info = pll_the_languages(array('raw'=>1));
+		$langs_html = '';
+
+		foreach ($language_info as $key => $lang) {
+			$is_current = (pll_current_language()==$lang['slug'])? ' class="current-language"':'';
+			if($key != 0) $langs_html .= ' / ';
+			$langs_html .= '<a'.$is_current.' href="'.$lang['url'].'">'.$lang['name'].'</a>';
+		}
+
+		return $langs_html;
+	}
+
+	else {
+		return false;
+	}
+}
 
 
 // ----------------------------------------
