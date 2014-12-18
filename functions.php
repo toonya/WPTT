@@ -38,15 +38,9 @@ require_once('inc/browser-check.php');
 if(belowIE(9))
 	browser_alert();
 require_once('inc/bootstrap-nav.php');
-require_once('inc/post-type-school.php');
-require_once('inc/post-type-certification.php');
-require_once('inc/post-type-ed.php');
-require_once('inc/post-type-camp.php');
-require_once('inc/post-type-visit.php');
-require_once('inc/post-type-hotel.php');
 
 //require_once('inc/post-metabox.php');
-require_once('inc/remove-origin.php');
+//require_once('inc/remove-origin.php');
 
 require_once('inc/change-login-area.php');
 //require_once('inc/qn/qn-support.php');
@@ -64,7 +58,7 @@ if(is_admin()){
 
 if(is_admin()){
 	require_once('inc/img-management.php');
-	//new TY_img_management('zh','中文','图片规格描述,未添加');
+	new TY_img_management('home','幻灯片','图片规格描述,未添加');
 	//new TY_img_management('slug_prefix','menu-name','description');
 }
 

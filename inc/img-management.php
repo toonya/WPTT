@@ -33,7 +33,7 @@ class TY_img_management {
     }
 
     public function home_imgs() {
-        add_menu_page( $this->language_name.'首页图片', $this->language_name.'首页图片', 'manage_options', 'img_management_'.$this->language, array(&$this, 'img_build'), '' );
+        add_menu_page( $this->language_name.'图片管理', $this->language_name.'首页图片', 'manage_options', 'img_management_'.$this->language, array(&$this, 'img_build'), '' );
     }
 
     public function img_build() { ?>
